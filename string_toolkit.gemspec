@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Theodor Weinreich"]
   spec.email = ["weinreichth@gmail.com"]
 
-  spec.summary = "Extends the Ruby String class with useful methods "
+  spec.summary = "Extends the Ruby String class with useful methods"
   spec.homepage = "https://github.com/toastheo/string-toolkit"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"

@@ -22,5 +22,13 @@ module StringToolkit
     def capitalize_each_word
       self.gsub(/\b[\p{Alnum}']+\b/) { |match| match.capitalize }
     end
+
+    def numeric?
+      true if Float(self) rescue false
+    end
+
+    def remove_whitespace
+      self.gsub(/\s+/, "")
+    end
   end
 end
