@@ -18,5 +18,9 @@ module StringToolkit
       processed_content = self.downcase.gsub(/\W/, '')
       processed_content == processed_content.reverse
     end
+
+    def capitalize_each_word
+      self.gsub(/\b[\p{Alnum}']+\b/) { |match| match.capitalize }
+    end
   end
 end
