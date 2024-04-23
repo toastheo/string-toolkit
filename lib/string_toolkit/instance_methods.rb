@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 module StringToolkit
   module InstanceMethods
     def to_slug

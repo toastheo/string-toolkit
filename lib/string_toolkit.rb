@@ -6,6 +6,8 @@ require_relative "string_toolkit/instance_methods"
 require_relative "string_toolkit/error"
 require_relative "string_toolkit/version"
 
+require_relative 'string_toolkit/ext_compiled/string_toolkit_ext'
+
 class String
   include StringToolkit::InstanceMethods
   extend StringToolkit::ClassMethods
