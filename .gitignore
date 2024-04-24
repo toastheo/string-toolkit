@@ -13,6 +13,9 @@
 ext/*.bundle
 *.dSYM/
 
+# vs code
+.vscode/
+
 # other
 Makefile
 *.gem

@@ -1,7 +1,0 @@
-{
-  "C_Cpp.default.includePath": [
-    "/home/weinreich/.asdf/installs/ruby/3.3.0/include/ruby-3.3.0",
-    "/home/weinreich/.asdf/installs/ruby/3.3.0/include/ruby-3.3.0/x86_64-linux"
-  ],
-  "C_Cpp.default.compilerPath": ""
-}
