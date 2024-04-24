@@ -1,3 +1,4 @@
+# auto generated
 /.bundle/
 /.yardoc
 /_yardoc/
@@ -19,3 +20,6 @@ ext/*.bundle
 # other
 Makefile
 *.gem
+TODO.txt
+Gemfile.lock
+mkmf.log
