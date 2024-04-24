@@ -1,33 +1,37 @@
 # frozen_string_literal: true
+
 module StringToolkit
+  # defines instance methods that are intended to be included in other classes
   module InstanceMethods
     def to_slug
-      slug = self.downcase
+      slug = downcase
 
-      slug.gsub!(/[^a-z0-9\-]+/, '-')
+      slug.gsub!(/[^a-z0-9-]+/, "-")
 
-      slug.gsub!(/-+/, '-')
+      slug.gsub!(/-+/, "-")
 
-      slug.gsub!(/^-|-$/, '')
+      slug.gsub!(/^-|-$/, "")
 
       slug
     end
 
     def palindrome?
-      processed_content = self.downcase.gsub(/\W/, '')
+      processed_content = downcase.gsub(/\W/, "")
       processed_content == processed_content.reverse
     end
 
     def capitalize_each_word
-      self.gsub(/\b[\p{Alnum}']+\b/) { |match| match.capitalize }
+      gsub(/\b[\p{Alnum}']+\b/) { |match| match.&capitalize }
     end
 
     def numeric?
-      true if Float(self) rescue false
+      !!Float(self)
+    rescue StandardError
+      false
     end
 
     def remove_whitespace
-      self.gsub(/\s+/, "")
+      gsub(/\s+/, "")
     end
   end
 end

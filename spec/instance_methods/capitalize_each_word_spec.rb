@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "string_toolkit"
 
 RSpec.describe String do
-  describe '#capitalize_each_word' do
+  describe "#capitalize_each_word" do
     it "capitalizes each word in a string, treating punctuation as word boundaries" do
       expect("hello world.i am a person".capitalize_each_word).to eq("Hello World.I Am A Person")
       expect("good morning, you're beautiful!".capitalize_each_word).to eq("Good Morning, You're Beautiful!")

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "string_toolkit"
 
 RSpec.describe String do
   describe "#to_slug" do
     it "converts mixed-case string to lower case" do
-      expect("HelloWorld".to_slug).to eq ("helloworld")
+      expect("HelloWorld".to_slug).to eq("helloworld")
     end
 
     it "replaces spaces and underscores with dashes" do

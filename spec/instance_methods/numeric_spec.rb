@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "string_toolkit"
 
@@ -8,7 +10,7 @@ RSpec.describe String do
     end
 
     it "returns true for valid float" do
-      expect("3.14".numeric?).to be true 
+      expect("3.14".numeric?).to be true
     end
 
     it "returns true for negative numbers" do
