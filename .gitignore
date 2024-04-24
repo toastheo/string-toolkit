@@ -15,3 +15,4 @@ ext/*.bundle
 
 # other
 Makefile
+*.gem
