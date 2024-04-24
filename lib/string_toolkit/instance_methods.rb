@@ -21,7 +21,7 @@ module StringToolkit
     end
 
     def capitalize_each_word
-      gsub(/\b[\p{Alnum}']+\b/) { |match| match.&capitalize }
+      gsub(/\b[\p{Alnum}']+\b/, &:capitalize)
     end
 
     def numeric?
