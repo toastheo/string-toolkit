@@ -31,7 +31,7 @@ static VALUE to_phone(VALUE self, VALUE country_code) {
   }
 }
 
-extern "C" void Init_string_toolkit_ext() {
+extern "C" void Init_string_toolkit() {
   rb_define_method(rb_cString, "to_phone", RUBY_METHOD_FUNC(to_phone), 1);
 }
 
