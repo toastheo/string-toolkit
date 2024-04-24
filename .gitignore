@@ -12,3 +12,6 @@
 *.so
 ext/*.bundle
 *.dSYM/
+
+# other
+Makefile
