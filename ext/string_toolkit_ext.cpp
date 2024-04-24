@@ -4,32 +4,56 @@
 
 using namespace i18n::phonenumbers;
 
-static VALUE method_to_phone(int argc, VALUE* argv, VALUE self) {
-  VALUE rb_str, rb_country_code;
-  rb_scan_args(argc, argv, "11", &rb_str, &rb_country_code);
+std::string handleError(const PhoneNumberUtil::ErrorType&);
 
-  char* input = StringValueCStr(rb_str);    // convert ruby string into c string
-  const char* country_code = NIL_P(rb_country_code) ? "ZZ" : StringValueCStr(rb_country_code);
-  std::string phoneNumber(input);
-
-  PhoneNumberUtil* phoneUtil = PhoneNumberUtil::GetInstance();
-  PhoneNumber phone_number;
-  PhoneNumberUtil::ErrorType error;
-
-  error = phoneUtil->Parse(phoneNumber, "ZZ", &phone_number);
-  if (error != PhoneNumberUtil::NO_PARSING_ERROR) {
-    error = phoneUtil->Parse(phoneNumber, country_code, &phone_number);
+static VALUE to_phone(VALUE self, VALUE country_code) {
+  if (TYPE(country_code) != T_STRING) {
+    rb_raise(rb_eArgError, "country_code has to be a string");
   }
 
-  if (error == PhoneNumberUtil::NO_PARSING_ERROR) {
-    std::string formatted_number;
-    phoneUtil->Format(phone_number, PhoneNumberUtil::INTERNATIONAL, &formatted_number);
-    return rb_str_new_cstr(formatted_number.c_str());
+  char* country = StringValueCStr(country_code);
+  std::string country_str(country);
+  
+  char* input = StringValueCStr(self);
+  std::string raw_input(input);
+
+  PhoneNumber phone_number;
+  PhoneNumberUtil* phone_util = PhoneNumberUtil::GetInstance();
+
+  PhoneNumberUtil::ErrorType error = phone_util->Parse(raw_input, country_str, &phone_number);
+
+  if (error == PhoneNumberUtil::NO_PARSING_ERROR && phone_util->IsValidNumber(phone_number)) {
+    std::string formatted_output;
+    phone_util->Format(phone_number, PhoneNumberUtil::INTERNATIONAL, &formatted_output);
+    return rb_str_new_cstr(formatted_output.c_str());
   } else {
-    return Qnil;
+    rb_raise(rb_eStandardError, "%s", handleError(error).c_str());
   }
 }
 
 extern "C" void Init_string_toolkit_ext() {
-  rb_define_method(rb_cString, "to_phone", reinterpret_cast<VALUE(*)(...)>(method_to_phone), -1);
+  rb_define_method(rb_cString, "to_phone", RUBY_METHOD_FUNC(to_phone), 1);
+}
+
+// ERROR HANDLING
+std::string handleError(const PhoneNumberUtil::ErrorType& error) {
+  std::string error_message = "Error parsing the phone number: ";
+  switch (error) {
+    case PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR:
+      error_message += "Invalid country code";
+      break;
+    case PhoneNumberUtil::NOT_A_NUMBER:
+      error_message += "Invalid number";
+      break;
+    case PhoneNumberUtil::TOO_LONG:
+      error_message += "Phone number is too long";
+      break;
+    case PhoneNumberUtil::INVALID_NUMBER:
+      error_message += "Phone number is invalid";
+      break;
+    default:
+      error_message += "Unkown error occured: " + error;
+  }
+
+  return error_message;
 }
