@@ -43,7 +43,7 @@ std::string handleError(const PhoneNumberUtil::ErrorType& error) {
       error_message += "Invalid country code";
       break;
     case PhoneNumberUtil::NOT_A_NUMBER:
-      error_message += "Invalid number";
+      error_message += "String is not a number";
       break;
     case PhoneNumberUtil::TOO_LONG:
       error_message += "Phone number is too long";

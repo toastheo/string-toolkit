@@ -18,7 +18,7 @@ RSpec.describe String do
     end
 
     it 'raises a StandardError for an invalid number' do
-      expect { "abcdefg".to_phone("US") }.to raise_error(StandardError, /Invalid number/)
+      expect { "abcdefg".to_phone("US") }.to raise_error(StandardError, /String is not a number/)
     end
 
     it 'raises a StandardError for an invalid country code' do
