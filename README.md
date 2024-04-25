@@ -1,8 +1,6 @@
 # StringToolkit
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/string_toolkit`. To experiment with that code, run `bin/console` for an interactive prompt.
+A Ruby gem which extends the ruby string class with some useful methods.
 
 ## Installation
 
@@ -18,7 +16,45 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+Here is a list of all new methods added by gem with code examples:
+- randomize: Returns a string of random characters.
+```ruby
+String.randomize()     # => "U!iAIWUn"
+String.randomize(20)   # => "JRk#m#%ac@3wWi3@gG&O"
+```
+
+- capitalize_each_word: Capitalizes each word in a string.
+```ruby
+"good morning, you're beautiful!".capitalize_each_word    # => "Good Morning, You're Beautiful!"
+```
+
+- numceric?: Checks whether a string contains only numeric characters.
+```ruby
+"123.456".numeric?    # => true
+"123Abc".numeric?     # => false
+```
+
+- palindrome?: Checks whether a character string represents a palindrome.
+```ruby
+"A man, a plan, a canal, Panama".palindrome?    # => true
+"This is not a palindrome".palindrome?          # => false
+```
+
+- remove_whitespace: Removes all whitespaces.
+```ruby
+"  Hello\t\tWorld\n\n\r  ".remove_whitespace    # => "HelloWorld"
+```
+
+- to_phone: Converts a character string containing a telephone number into the telephone format corresponding to the transferred country code.
+```ruby
+"025550125".to_phone("US")    # => +1 202-555-0125
+"030123456".to_phone("DE")    # => +49 30 123456
+```
+
+- to_slug: Creates a slug from the current string.
+```ruby
+"Hello person, how was your day?".to_slug    # => "hello-person-how-was-your-day"
+```
 
 ## Development
 
@@ -28,7 +64,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/string_toolkit.
+Bug reports and pull requests are welcome on GitHub at https://github.com/toastheo/string_toolkit.
 
 ## License
 
