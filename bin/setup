@@ -1,8 +1,75 @@
 #!/usr/bin/env bash
 set -euo pipefail
 IFS=$'\n\t'
-set -vx
+
+get_install_command() {
+  case "$(uname -s)" in
+    Darwin) echo "brew install" ;;            # macOS
+    Linux) echo "sudo apt-get install -y" ;;  # debian
+    *) echo "Unsupported OS. This script only supports macOS and debian/ubuntu" && exit 1 ;;
+  esac
+}
+
+check_and_install_dependency() {
+  local dependency=$1
+  local package_name=$2
+  local install_command
+
+  if ! command -v $dependency &> /dev/null; then
+    echo "Unable to find $dependency."
+    read -p "Do you want to install $package_name now? (y/n) " response
+
+    while [[ ! "$response" =~ ^[YyNn]$ ]]; do
+      echo "Invalid input. Please enter 'y' or 'n'."
+      read -p "Do you want to install $package_name now? (y/n) " response
+    done
+
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+      echo "Installing $package_name..."
+      install_command=$(get_install_command)
+      $install_command $package_name
+    else
+      echo "$package_name was not installed."
+    fi
+  else
+    echo "$dependency is installed."
+  fi
+}
+
+check_and_install_libphonenumber() {
+  local package_name="libphonenumber"
+  local include_dir="/usr/local/include/phonenumbers" # macOS
+  local install_command
+
+  if [[ "$(uname -s)" == "Linux" ]]; then
+    include_dir="/usr/include/phonenumbers" # debian
+  fi
+
+  if [ ! -d $include_dir ]; then
+    echo "Unable to find libphonenumber development files."
+    read -p "Do you want to install $package_name now? (y/n) " response
+
+    while [[ ! "$response" =~ ^[YyNn]$ ]]; do
+      echo "Invalid input. Please enter 'y' or 'n'."
+      read -p "Do you want to install $package_name now? (y/n) " response
+    done
+
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+      echo "Installing $package_name..."
+      install_command=$(get_install_command)
+      $install_command $package_name
+    else
+      echo "$package_name was not installed."
+    fi
+  else
+    echo "libphonenumber development files are installed."
+  fi
+}
+
+# calling the installation functions
+check_and_install_dependency "cmake" "cmake"
+check_and_install_libphonenumber
 
 bundle install
 
-# Do any other automated setup that you need to do here
+rake
