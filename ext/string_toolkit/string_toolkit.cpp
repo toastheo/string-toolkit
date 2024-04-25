@@ -11,6 +11,10 @@ static VALUE to_phone(VALUE self, VALUE country_code) {
     rb_raise(rb_eArgError, "country_code has to be a string");
   }
 
+  if (TYPE(self) != T_STRING) {
+    rb_raise(rb_eTypeError, "input must be a string");
+  }
+
   char* country = StringValueCStr(country_code);
   std::string country_str(country);
   
@@ -52,7 +56,7 @@ std::string handleError(const PhoneNumberUtil::ErrorType& error) {
       error_message += "Phone number is invalid";
       break;
     default:
-      error_message += "Unkown error occured: " + error;
+      error_message += "Unkown error occured.";
   }
 
   return error_message;
