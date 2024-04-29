@@ -3,14 +3,13 @@
 require "bundler/gem_tasks"
 require "rubocop/rake_task"
 require "rspec/core/rake_task"
+require "rake/extensiontask"
 
-namespace :ext do
-  desc "Prepare and build the C++ extension"
-  task :build do
-    sh "ruby ext/string_toolkit/extconf.rb"
-    sh "make"
-    sh "mv string_toolkit.o string_toolkit.so lib/string_toolkit"
-  end
+Rake::ExtensionTask.new("string_toolkit") do |ext|
+  ext.lib_dir = "lib/string_toolkit"
+  ext.cross_compile = true
+  ext.cross_platform = %w[x86-mingw32 x86_64-linux x86_64-darwin]
+  ext.config_script = "extconf.rb"
 end
 
 desc "Run Rspec code examples"
@@ -22,4 +21,4 @@ task :rubocop do
 end
 
 desc "Default task"
-task default: ["ext:build", :spec, :rubocop]
+task default: %i[compile:string_toolkit spec rubocop]
