@@ -76,7 +76,7 @@ String.randomize(20)   # => "JRk#m#%ac@3wWi3@gG&O"
 
 If you are using Visual Studio Code (VS Code) as your development environment, I provide a baseline configuration in the `.vscode` directory to help you get started. This includes predefined settings for C/C++ development, debugging, and formatting.
 
-**Important Note:** The settings in the `.vscode` directory may include paths and configurations specific to our development setup. I recommend reviewing and adjusting these settings to fit your local environment. This may involve modifying paths in `settings.json` and `c_cpp_properties.json` to match your local installations and toolchains.
+**Important Note:** The settings in the `.vscode` directory may include paths and configurations specific to my development setup. I recommend reviewing and adjusting these settings to fit your local environment. This may involve modifying paths in `settings.json` and `c_cpp_properties.json` to match your local installations and toolchains.
 
 Please ensure that these adjustments are made on your local copy only and are not pushed back to the repository to maintain general compatibility for all developers.
 
