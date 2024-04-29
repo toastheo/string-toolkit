@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
+
 require "spec_helper"
 require "string_toolkit"
 
@@ -25,5 +27,41 @@ RSpec.describe String do
         end
       end
     end
+
+    it "allows excluding digits" do
+      100.times do
+        random_string = String.randomize(10, digits: false)
+        expect(random_string).not_to match(/[0-9]/)
+      end
+    end
+
+    it "allows excluding lowercase letters" do
+      100.times do
+        random_string = String.randomize(10, lower_case: false)
+        expect(random_string).not_to match(/[a-z]/)
+      end
+    end
+
+    it "allows excluding uppercase letters" do
+      100.times do
+        random_string = String.randomize(10, upper_case: false)
+        expect(random_string).not_to match(/[A-Z]/)
+      end
+    end
+
+    it "allows excluding special characters" do
+      100.times do
+        random_string = String.randomize(10, special_chars: false)
+        expect(random_string).not_to match(/[!@#$%^&*]/)
+      end
+    end
+
+    it "raises an error if no character set is included" do
+      expect do
+        String.randomize(10, digits: false, lower_case: false, upper_case: false, special_chars: false)
+      end.to raise_error(ArgumentError)
+    end
   end
 end
+
+# rubocop:enable Metrics/BlockLength
