@@ -63,7 +63,7 @@ String.randomize(20)   # => "JRk#m#%ac@3wWi3@gG&O"
 - to_phone: Converts a character string containing a telephone number into the telephone format corresponding to the transferred country code.
 (Throws an exception if the cell phone number or the country code is invalid.)
 ```ruby
-"025550125".to_phone("US")    # => +1 202-555-0125
+"2025550125".to_phone("US")    # => +1 202-555-0125
 "030123456".to_phone("DE")    # => +49 30 123456
 ```
 
