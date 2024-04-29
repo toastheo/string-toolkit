@@ -3,6 +3,7 @@
 # rubocop:disable Style/GlobalVars
 
 require "mkmf"
+require "colorize"
 
 conf = RbConfig::MAKEFILE_CONFIG
 
@@ -13,19 +14,31 @@ if conf["target_cpu"] == "arm64" && conf["target_os"].start_with?("darwin")
 end
 
 unless have_library("phonenumber") && have_library("protobuf")
-  warn <<~MSG
+  abort <<~MSG
 
-    WARNING: It looks like libphonenumber is not installed on this system.
-    libphonenumber is required to use the to_phone method.
-
-    If you are not planning to use to_phone ignore this message.
-    Otherwise you can follow these steps to install the lib:
-
-    On Mac:
-      brew install libphonenumber
-
-    On Debian / Ubuntu:
-      apt-get install -y libphonenumber-dev
+    ,---------------------------------------------------------------------,
+    |                                                                     |
+    |  #{("=" * 50).to_s.colorize(:red)}                 |
+    |  #{"OOPS, SOMETHING WENT WRONG!".colorize(:red)}                                        |
+    |  #{("=" * 50).to_s.colorize(:red)}                 |
+    |                                                                     |
+    |  To use the string-toolkit gem, libphonenumber must be              |
+    |  installed on your system.                                          |
+    |                                                                     |
+    |  But don't worry, fixing this should be quick.                      |
+    |  Just follow these instructions:                                    |
+    |                                                                     |
+    |  1. Install the library:                                            |
+    |                                                                     |
+    |    On Mac:                                                          |
+    |      #{"brew install libphonenumber".colorize(:green)}                                    |
+    |                                                                     |
+    |    On Debian / Ubuntu:                                              |
+    |      #{"apt-get install -y libphonenumber-dev".colorize(:green)}                          |
+    |                                                                     |
+    |  2. Retry installing the gem (i.e. 'bundle install')                |
+    |                                                                     |
+    '---------------------------------------------------------------------'
 
   MSG
 end
