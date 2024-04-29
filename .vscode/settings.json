@@ -1,0 +1,7 @@
+{
+  "C_Cpp.default.includePath": [
+    "${env:HOME}/.asdf/installs/ruby/3.3.0/include/ruby-3.3.0",
+    "${env:HOME}/.asdf/installs/ruby/3.3.0/include/ruby-3.3.0/x86_64-linux",
+    "/usr/include/phonenumbers"
+  ]
+}
