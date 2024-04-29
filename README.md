@@ -4,15 +4,30 @@ A Ruby gem which extends the ruby string class with some useful methods.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+1. **Install all the necessary libraries:**
+    
+    ```sh
+    brew install libphonenumber                # for MacOS
+    ```
+    ```sh
+    apt-get install -y libphonenumber-dev      # for Debian / Ubuntu
+    ```
 
-Install the gem and add to the application's Gemfile by executing:
+2. **Install the gem**
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+    Add this to your gemfile:
+    ```ruby
+    gem "[NOT RELEASED YET]"
+    ```
+    and than execute:
+    ```sh
+    bundle install
+    ```
+    
+    or alternatively if bundler is not used to manage dependencies, install the gem by executing:
+    ```sh
+    gem install "[NOT RELEASED YET]"
+    ```
 
 ## Usage
 
