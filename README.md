@@ -73,6 +73,12 @@ String.randomize(20)   # => "JRk#m#%ac@3wWi3@gG&O"
 
 ## Development
 
+If you are using Visual Studio Code (VS Code) as your development environment, I provide a baseline configuration in the `.vscode` directory to help you get started. This includes predefined settings for C/C++ development, debugging, and formatting.
+
+**Important Note:** The settings in the `.vscode` directory may include paths and configurations specific to our development setup. I recommend reviewing and adjusting these settings to fit your local environment. This may involve modifying paths in `settings.json` and `c_cpp_properties.json` to match your local installations and toolchains.
+
+Please ensure that these adjustments are made on your local copy only and are not pushed back to the repository to maintain general compatibility for all developers.
+
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
