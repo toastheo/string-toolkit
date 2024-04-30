@@ -24,5 +24,13 @@ RSpec.describe String do
     it "trims dashes from the start and end of the string" do
       expect("-hello-world-".to_slug).to eq("hello-world")
     end
+
+    it "uses a custom seperator" do
+      expect("hello world hello world".to_slug("+")).to eq("hello+world+hello+world")
+    end
+
+    it "uses a custom seperator with multiple chars" do
+      expect("hello world hello world".to_slug("=+=")).to eq ("hello=+=world=+=hello=+=world")
+    end
   end
 end

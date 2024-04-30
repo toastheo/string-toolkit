@@ -102,9 +102,12 @@ String.randomize(15, { digits: false, lower_case: false, special_chars: false })
 
 ### Description
 - **to_slug**: Creates a slug from the current string.
+### Parameters
+- `seperator`: Optional. The selected separator. Can also be a string of any characters.
 ### Example
 ```ruby
-"Hello person, how was your day?".to_slug    # => "hello-person-how-was-your-day"
+"Hello person, how was your day?".to_slug          # => "hello-person-how-was-your-day"
+"Hello person, how was your day?".to_slug("==")    # => "hello==person==how==was==your==day"
 ```
 
 ## Development

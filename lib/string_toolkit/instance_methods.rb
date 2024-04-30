@@ -3,14 +3,14 @@
 module StringToolkit
   # defines instance methods that are intended to be included in other classes
   module InstanceMethods
-    def to_slug
+    def to_slug(separator = "-")
       slug = downcase
 
-      slug.gsub!(/[^a-z0-9-]+/, "-")
+      slug.gsub!(/[^a-z0-9-]+/, separator)
 
-      slug.gsub!(/-+/, "-")
+      slug.gsub!(/#{Regexp.escape(separator)}+/, separator)
 
-      slug.gsub!(/^-|-$/, "")
+      slug.gsub!(/^#{Regexp.escape(separator)}|#{Regexp.escape(separator)}$/, "")
 
       slug
     end
