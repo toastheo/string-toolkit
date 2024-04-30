@@ -95,7 +95,7 @@ String.randomize(15, { digits: false, lower_case: false, special_chars: false })
 ### Example
 ```ruby
 "2025550125".to_phone("US")    # => +1 202-555-0125
-"030123456".to_phone("DE")    # => +49 30 123456
+"030123456".to_phone("DE")     # => +49 30 123456
 ```
 
 ---
