@@ -1,0 +1,2 @@
+JSON Data copied from: https://github.com/RubyMoney/money
+License: [MIT License] (https://opensource.org/licenses/MIT)
