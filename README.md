@@ -88,8 +88,8 @@ String.randomize(15, { digits: false, lower_case: false, special_chars: false })
 ---
 
 ### Description
-- **to_phone**: Converts a character string containing a telephone number into the telephone format corresponding to the transferred country code.
-(Throws an exception if the cell phone number or the country code is invalid.)
+- **to_phone**: Converts a character string containing a phone number into the phone format corresponding to the transferred country code.
+(Throws an exception if the phone number or the country code is invalid.)
 ### Parameters
 - `country_code`: The country code to be used.
 ### Example
