@@ -112,7 +112,7 @@ Extracts all e-mail addresses from a string.
 
 ---
 
-### obfuscate(start: , finish: , char: , strict:) 
+## obfuscate(start: , finish: , char: , strict:) 
 Hides parts of a string by replacing alphanumeric characters with a specified character.
 
 **Parameters**
@@ -132,7 +132,7 @@ Hides parts of a string by replacing alphanumeric characters with a specified ch
 
 ---
 
-### word_count(ignore_case:, only:)
+## word_count(ignore_case:, only:)
 Counts the words in a string.
 
 **Parameters**
@@ -147,4 +147,23 @@ Counts the words in a string.
 "Hello hello HELLO".word_count(ignore_case: true)                   # => 1
 "Hello world! This is great.".word_count(only: %w[Hello world])     # => 2
 "Hello hello HELLO".word_count(ignore_case: true, only: "Hello")    # => 3      
+```
+
+---
+
+## to_boolean
+Converts common string representations of truth values to a real Boolean value.
+
+**Example**
+
+*Here are just a few examples. If you are interested in the complete list and/or would like to extend it, then take a look at config/booleans.yml.*
+
+```ruby
+"Y".to_boolean      # => true
+"YES".to_boolean    # => true
+"TRUE".to_boolean   # => true
+
+"N".to_boolean      # => false
+"NO".to_boolean     # => false
+"FALSE".to_boolean  # => false
 ```

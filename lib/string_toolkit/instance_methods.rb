@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
+require "yaml"
+
+# module which has further modules that are added to the String class
 module StringToolkit
+  def self.boolean_values
+    @boolean_values = YAML.load_file(File.join(File.dirname(__FILE__), "../../config", "booleans.yml"))
+  end
+
   # defines instance methods that are intended to be included in other classes
   module InstanceMethods
     def to_slug(separator = "-")
@@ -65,6 +72,13 @@ module StringToolkit
       words.uniq! if ignore_case
 
       words.size
+    end
+
+    def to_boolean
+      return true if StringToolkit.boolean_values["true_values"].include?(upcase)
+      return false if StringToolkit.boolean_values["false_values"].include?(upcase)
+
+      nil
     end
   end
 end
