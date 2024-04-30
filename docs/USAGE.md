@@ -129,3 +129,22 @@ Hides parts of a string by replacing alphanumeric characters with a specified ch
 "1234-5678-Abcd-1121".obfuscate(start: 4, end: 14, char: '#')           # => "1234-####-####-1121"
 "1234-5678-Abcd-1121".obfuscate(start: 4, finish: 14, strict: true)     # => "1234***********1121"
 ```
+
+---
+
+### word_count(ignore_case:, only:)
+Counts the words in a string.
+
+**Parameters**
+
+- `ignore_case`: Does not differentiate between upper and lower case when counting.
+- `only`: Counts only the specified words.
+
+**Example**
+
+```ruby
+"Hello world! This is great.".word_count                            # => 5
+"Hello hello HELLO".word_count(ignore_case: true)                   # => 1
+"Hello world! This is great.".word_count(only: %w[Hello world])     # => 2
+"Hello hello HELLO".word_count(ignore_case: true, only: "Hello")    # => 3      
+```

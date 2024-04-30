@@ -51,5 +51,20 @@ module StringToolkit
 
       modified_string
     end
+
+    def word_count(ignore_case: false, only: nil) # rubocop:disable Metrics/CyclomaticComplexity
+      words = scan(/\p{Word}+/)
+
+      words = words.map(&:downcase) if ignore_case
+
+      if only
+        only = Array(only).map(&:downcase) if ignore_case
+        words = words.select { |word| only.include?(word) }
+      end
+
+      words.uniq! if ignore_case
+
+      words.size
+    end
   end
 end
