@@ -30,7 +30,7 @@ RSpec.describe String do
     end
 
     it "uses a custom seperator with multiple chars" do
-      expect("hello world hello world".to_slug("=+=")).to eq ("hello=+=world=+=hello=+=world")
+      expect("hello world hello world".to_slug("=+=")).to eq("hello=+=world=+=hello=+=world")
     end
   end
 end

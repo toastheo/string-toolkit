@@ -119,6 +119,22 @@ String.randomize(15, { digits: false, lower_case: false, special_chars: false })
 "Contact us at example@example.com or Support@FOO.com"  # => ["example@example.com", "support@foo.com"]
 ```
 
+---
+
+### Description
+- **obfuscate**: Hides parts of a string by replacing alphanumeric characters with a specified character.
+### Parameters
+- `start`: The start index from which characters in the string are to be replaced.
+- `finish`: The end index up to which characters in the string are to be replaced.
+- `char`: Optional. The character used for the replacement. The asterisk (*) is used by default.
+- `strict`: Optional. If strict is set to true, all characters are hidden and not just alphanumeric characters.
+### Example
+```ruby
+"1234-5678-Abcd-1121".obfuscate(start: 4, end: 14)                      # => "1234-****-****-1121"
+"1234-5678-Abcd-1121".obfuscate(start: 4, end: 14, char: '#')           # => "1234-####-####-1121"
+"1234-5678-Abcd-1121".obfuscate(start: 4, finish: 14, strict: true)     # => "1234***********1121"
+```
+
 ## Development
 
 If you are using Visual Studio Code (VS Code) as your development environment, I provide a baseline configuration in the `.vscode` directory to help you get started. This includes predefined settings for C/C++ development, debugging, and formatting.

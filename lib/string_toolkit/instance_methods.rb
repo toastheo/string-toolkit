@@ -37,5 +37,19 @@ module StringToolkit
     def extract_emails
       scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i).map(&:downcase)
     end
+
+    def obfuscate(start:, finish:, char: "*", strict: false) # rubocop:disable Metrics/CyclomaticComplexity
+      return dup if start > finish || start.negative? || finish >= length
+
+      modified_string = dup
+
+      modified_string.length.times do |i|
+        next unless i >= start && i <= finish
+
+        modified_string[i] = char if modified_string[i].match?(/[0-9A-Za-z]/) || strict
+      end
+
+      modified_string
+    end
   end
 end
