@@ -31,43 +31,78 @@ A Ruby gem which extends the ruby string class with some useful methods.
 
 ## Usage
 
-Here is a list of all new methods added by gem with code examples:
-- randomize: Returns a string of random characters.
+### Description
+- **randomize**: Returns a string of random characters.
+### Parameters
+- `length`: Optional. The length of the random string to generate. Default is 8 characters.
+- `options`: Optional. A hash to specify which types of characters to include or exclude:
+    - `digits`: Include digits(0-9).
+    - `lower_case`: Include lowercase letters (a-z)
+    - `upper_case`: Include uppercase letters (A-Z)
+    - `special_chars`: Include special characters(!@#$%^&*)
+### Example
 ```ruby
-String.randomize()     # => "U!iAIWUn"
-String.randomize(20)   # => "JRk#m#%ac@3wWi3@gG&O"
+String.randomize()                                                                  # => "U!iAIWUn"
+String.randomize(20)                                                                # => "JRk#m#%ac@3wWi3@gG&O"
+String.randomize(15, { digits: false, lower_case: false, special_chars: false })    # => "QWRNNYMHZVGLWTG"
 ```
 
-- capitalize_each_word: Capitalizes each word in a string.
+---
+
+### Description
+- **capitalize_each_word**: Capitalizes each word in a string.
+### Example
 ```ruby
 "good morning, you're beautiful!".capitalize_each_word    # => "Good Morning, You're Beautiful!"
 ```
 
-- numceric?: Checks whether a string contains only numeric characters.
+---
+
+### Description
+- **numceric?**: Checks whether a string contains only numeric characters.
+### Example
 ```ruby
 "123.456".numeric?    # => true
 "123Abc".numeric?     # => false
 ```
 
-- palindrome?: Checks whether a character string represents a palindrome.
+---
+
+### Description
+- **palindrome?**: Checks whether a character string represents a palindrome.
+### Example
 ```ruby
 "A man, a plan, a canal, Panama".palindrome?    # => true
 "This is not a palindrome".palindrome?          # => false
 ```
 
-- remove_whitespace: Removes all whitespaces.
+---
+
+### Description
+- **remove_whitespace**: Removes all whitespaces.
+### Example
 ```ruby
 "  Hello\t\tWorld\n\n\r  ".remove_whitespace    # => "HelloWorld"
 ```
 
-- to_phone: Converts a character string containing a telephone number into the telephone format corresponding to the transferred country code.
+---
+
+### Description
+- **to_phone**: Converts a character string containing a telephone number into the telephone format corresponding to the transferred country code.
 (Throws an exception if the cell phone number or the country code is invalid.)
+### Parameters
+- `country_code`: The country code to be used.
+### Example
 ```ruby
 "2025550125".to_phone("US")    # => +1 202-555-0125
 "030123456".to_phone("DE")    # => +49 30 123456
 ```
 
-- to_slug: Creates a slug from the current string.
+---
+
+### Description
+- **to_slug**: Creates a slug from the current string.
+### Example
 ```ruby
 "Hello person, how was your day?".to_slug    # => "hello-person-how-was-your-day"
 ```
