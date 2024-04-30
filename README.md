@@ -110,6 +110,15 @@ String.randomize(15, { digits: false, lower_case: false, special_chars: false })
 "Hello person, how was your day?".to_slug("==")    # => "hello==person==how==was==your==day"
 ```
 
+---
+
+### Description
+- **extract_emails**: Extracts all e-mail addresses from a string.
+### Example
+```ruby
+"Contact us at example@example.com or Support@FOO.com"  # => ["example@example.com", "support@foo.com"]
+```
+
 ## Development
 
 If you are using Visual Studio Code (VS Code) as your development environment, I provide a baseline configuration in the `.vscode` directory to help you get started. This includes predefined settings for C/C++ development, debugging, and formatting.

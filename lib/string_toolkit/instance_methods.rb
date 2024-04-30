@@ -33,5 +33,9 @@ module StringToolkit
     def remove_whitespace
       gsub(/\s+/, "")
     end
+
+    def extract_emails
+      scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i).map(&:downcase)
+    end
   end
 end
