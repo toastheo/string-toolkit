@@ -17,7 +17,7 @@ A Ruby gem which extends the ruby string class with some useful methods.
 
     Add this to your gemfile:
     ```ruby
-    gem "[NOT RELEASED YET]"
+    gem "string_toolkit"
     ```
     and than execute:
     ```sh
@@ -26,7 +26,7 @@ A Ruby gem which extends the ruby string class with some useful methods.
     
     or alternatively if bundler is not used to manage dependencies, install the gem by executing:
     ```sh
-    gem install "[NOT RELEASED YET]"
+    gem install "string_toolkit"
     ```
 
 ## Usage
