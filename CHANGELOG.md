@@ -1,5 +1,17 @@
-## [Unreleased]
+## [Release]
 
-## [0.1.0] - 2024-04-23
+## [0.9.0] - 2024-04-23
 
-- Initial release
+- Added the following methods:
+  - randomize
+  - capitalize_each_word
+  - numeric?
+  - palindrome?
+  - remove_whitespace
+  - to_phone
+  - to_slug
+  - extract_emailss
+  - obfuscate
+  - word_count
+  - to_boolean
+  - to_currency
