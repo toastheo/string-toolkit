@@ -167,3 +167,19 @@ Converts common string representations of truth values to a real Boolean value.
 "NO".to_boolean     # => false
 "FALSE".to_boolean  # => false
 ```
+
+---
+
+## to_currency
+Converts a character string containing a float value into the currency format corresponding to the transferred ISO code.
+
+**Parameters**
+
+- `currency code`: The currency code according to ISO standart.
+
+**Example**
+
+```ruby
+"-12345678.90".to_currency("USD")    # => -$12,345,678.90
+"1234.56".to_currency("Db")          # => 1,234.56 Db
+```

@@ -15,6 +15,7 @@ RSpec.describe String do
 
     it "raises an ArgumentError" do
       expect { "1234.56".to_currency("XXXX") }.to raise_error(ArgumentError, /Unsupported currency/)
+      expect { "12AA.56".to_currency("EUR") }.to raise_error(ArgumentError, /invalid value for Float()/)
     end
 
     it "formats large numbers correctly" do

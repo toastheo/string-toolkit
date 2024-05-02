@@ -4,6 +4,7 @@ require "json"
 
 # module which has further modules that are added to the String class
 module StringToolkit
+  # Help classes for the other modules
   module Helpers
     def self.boolean_values
       @boolean_values = YAML.load_file(File.join(File.dirname(__FILE__), "../../config", "booleans.yml"))
