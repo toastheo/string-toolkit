@@ -1,6 +1,6 @@
 ## [Release]
 
-## [0.9.0] - 2024-04-23
+## [0.9.0] - 2024-05-01
 
 - Added the following methods:
   - randomize
