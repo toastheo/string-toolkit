@@ -4,10 +4,6 @@ require "yaml"
 
 # module which has further modules that are added to the String class
 module StringToolkit
-  def self.boolean_values
-    @boolean_values = YAML.load_file(File.join(File.dirname(__FILE__), "../../config", "booleans.yml"))
-  end
-
   # defines instance methods that are intended to be included in other classes
   module InstanceMethods
     def to_slug(separator = "-")
@@ -75,10 +71,39 @@ module StringToolkit
     end
 
     def to_boolean
-      return true if StringToolkit.boolean_values["true_values"].include?(upcase)
-      return false if StringToolkit.boolean_values["false_values"].include?(upcase)
+      return true if StringToolkit::Helpers.boolean_values["true_values"].include?(upcase)
+      return false if StringToolkit::Helpers.boolean_values["false_values"].include?(upcase)
 
       nil
+    end
+
+    def to_currency(currency_code) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+      settings = StringToolkit::Helpers::CURRENCY_SETTINGS[currency_code.downcase]
+
+      raise ArgumentError, "Unsupported currency" unless settings
+
+      formatted_amount = format("%.2f", self).split(".")
+      integer_part = formatted_amount[0]
+      decimal_part = formatted_amount[1]
+      symbol = settings["symbol"]
+      thousands_separator = settings["thousands_separator"]
+      decimal_mark = settings["decimal_mark"]
+      symbol_first = settings["symbol_first"]
+
+      integer_part_with_delimiters = integer_part.chars.to_a.reverse.each_slice(3)
+                                                 .map(&:join).join(thousands_separator).reverse
+
+      if symbol_first
+        formatted_currency = if integer_part.start_with?("-")
+                               "-#{symbol}#{integer_part_with_delimiters[1..]}#{decimal_mark}#{decimal_part}"
+                             else
+                               "#{symbol}#{integer_part_with_delimiters}#{decimal_mark}#{decimal_part}"
+                             end
+      else
+        formatted_currency = "#{integer_part_with_delimiters}#{decimal_mark}#{decimal_part} #{symbol}"
+      end
+
+      formatted_currency
     end
   end
 end
